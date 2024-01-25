@@ -48,9 +48,11 @@ class Recognizer {
 
   void registerFaceInDB(String name, List<double> embedding) async {
     // row to insert
+    var data=embedding.join(",");
+    print("value of image"+data);
     Map<String, dynamic> row = {
       DatabaseHelper.columnName: name,
-      DatabaseHelper.columnEmbedding: embedding.join(",")
+      DatabaseHelper.columnEmbedding: data
     };
     final id = await dbHelper.insert(row);
     print('inserted row id: $id');
@@ -118,8 +120,7 @@ class Recognizer {
       List<double> knownEmb = item.value.embeddings;
       double distance = 0;
       for (int i = 0; i < emb.length; i++) {
-        double diff = emb[i] -
-            knownEmb[i];
+        double diff = emb[i] - knownEmb[i];
         distance += diff*diff;
       }
       distance = sqrt(distance);

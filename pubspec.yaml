@@ -41,7 +41,10 @@ dependencies:
   camera: ^0.9.4+5
   sqflite: ^2.3.0
   path_provider: ^2.1.1
-  google_mlkit_commons: ^0.6.1
+  google_mlkit_commons: ^0.2.0
+  shared_preferences: any
+
+  
 
 dev_dependencies:
   flutter_test:
